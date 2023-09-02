@@ -22,8 +22,10 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.exirpit.scrumpoker.presentation.common.theme.ScrumPokerShapes
 import com.exirpit.scrumpoker.presentation.singlePlayer.viewModel.SinglePlayerViewModel
-import com.exirpit.scrumpoker.presentation.theme.ScrumPokerTheme
+import com.exirpit.scrumpoker.presentation.common.theme.ScrumPokerTheme
+import com.exirpit.scrumpoker.presentation.common.theme.ScrumPokerTypography
 
 @Composable
 fun SinglePlayerScreen(
@@ -42,7 +44,7 @@ fun SinglePlayerScreen(
                         defaultElevation = 10.dp,
                         pressedElevation = 5.dp
                     ),
-                    shape = MaterialTheme.shapes.large
+                    shape = ScrumPokerShapes.large
                 ) {
                     Box(
                         modifier = Modifier
@@ -58,7 +60,7 @@ fun SinglePlayerScreen(
                         ) {
                             Text(
                                 text = "Title",
-                                style = MaterialTheme.typography.headlineSmall,
+                                style = ScrumPokerTypography.headlineSmall,
                                 textAlign = TextAlign.Center
                             )
                         }
@@ -71,7 +73,7 @@ fun SinglePlayerScreen(
 
 @Preview(showBackground = true)
 @Composable
-fun SinglePlayerScreenPreview() {
+private fun SinglePlayerScreenPreview() {
     ScrumPokerTheme {
         SinglePlayerScreen(
             viewModel = SinglePlayerViewModel()

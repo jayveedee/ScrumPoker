@@ -11,7 +11,7 @@ import com.exirpit.scrumpoker.presentation.singlePlayer.screen.SinglePlayerScree
 import com.exirpit.scrumpoker.presentation.singlePlayer.viewModel.SinglePlayerViewModel
 import com.exirpit.scrumpoker.presentation.startMenu.screen.StartMenuScreen
 import com.exirpit.scrumpoker.presentation.startMenu.viewModel.StartMenuViewModel
-import com.exirpit.scrumpoker.presentation.theme.ScrumPokerTheme
+import com.exirpit.scrumpoker.presentation.common.theme.ScrumPokerTheme
 import com.google.accompanist.navigation.animation.AnimatedNavHost
 import com.google.accompanist.navigation.animation.composable
 import com.google.accompanist.navigation.animation.rememberAnimatedNavController
@@ -29,7 +29,7 @@ class MainActivity : ComponentActivity() {
 
 @OptIn(ExperimentalAnimationApi::class)
 @Composable
-fun Navigation(
+private fun Navigation(
     navController: NavHostController = rememberAnimatedNavController()
 ) {
     val context = LocalContext.current
