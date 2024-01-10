@@ -130,7 +130,7 @@ private fun CardBackSide() {
         ) {
             val canvasWidth = size.width
             val canvasHeight = size.height
-            val lineSpacing = 25f
+            val lineSpacing = 5f
             val lineColor = Color.Black
 
             for (x in 0 until canvasWidth.toInt() step lineSpacing.toInt()) {
