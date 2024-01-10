@@ -24,8 +24,8 @@ import com.exirpit.scrumpoker.presentation.MultiPlayerRoute
 import com.exirpit.scrumpoker.presentation.SettingsRoute
 import com.exirpit.scrumpoker.presentation.SinglePlayerRoute
 import com.exirpit.scrumpoker.presentation.startMenu.viewModel.StartMenuViewModel
-import com.exirpit.scrumpoker.presentation.theme.ScrumPokerTheme
-import com.exirpit.scrumpoker.presentation.theme.Typography
+import com.exirpit.scrumpoker.presentation.common.theme.ScrumPokerTheme
+import com.exirpit.scrumpoker.presentation.common.theme.ScrumPokerTypography
 
 @Composable
 fun StartMenuScreen(
@@ -71,14 +71,14 @@ fun StartMenuScreen(
             Text(
                 text = "ScrumPoker: version ${versionNameState.value}.${versionCodeState.value}",
                 color = MaterialTheme.colorScheme.primary,
-                style = MaterialTheme.typography.bodySmall
+                style = ScrumPokerTypography.bodySmall
             )
         }
     }
 }
 
 @Composable
-fun StartMenuButton(
+private fun StartMenuButton(
     onClick: (String) -> Unit,
     text: String,
     navigationPath: String,
@@ -96,14 +96,14 @@ fun StartMenuButton(
     ) {
         Text(
             text = text,
-            style = Typography.headlineMedium
+            style = ScrumPokerTypography.headlineMedium
         )
     }
 }
 
 @Preview(showBackground = true)
 @Composable
-fun StartMenuScreenPreview() {
+private fun StartMenuScreenPreview() {
     ScrumPokerTheme() {
         val context = LocalContext.current
         StartMenuScreen(
