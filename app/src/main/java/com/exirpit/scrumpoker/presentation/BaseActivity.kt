@@ -7,14 +7,14 @@ import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.NavHostController
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.rememberNavController
+import androidx.navigation.compose.composable
 import com.exirpit.scrumpoker.presentation.singlePlayer.screen.SinglePlayerScreen
 import com.exirpit.scrumpoker.presentation.singlePlayer.viewModel.SinglePlayerViewModel
 import com.exirpit.scrumpoker.presentation.startMenu.screen.StartMenuScreen
 import com.exirpit.scrumpoker.presentation.startMenu.viewModel.StartMenuViewModel
 import com.exirpit.scrumpoker.presentation.common.theme.ScrumPokerTheme
-import com.google.accompanist.navigation.animation.AnimatedNavHost
-import com.google.accompanist.navigation.animation.composable
-import com.google.accompanist.navigation.animation.rememberAnimatedNavController
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,14 +27,13 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-@OptIn(ExperimentalAnimationApi::class)
 @Composable
 private fun Navigation(
-    navController: NavHostController = rememberAnimatedNavController()
+    navController: NavHostController = rememberNavController()
 ) {
     val context = LocalContext.current
 
-    AnimatedNavHost(
+    NavHost(
         navController = navController,
         startDestination = StartMenuRoute
     ) {
