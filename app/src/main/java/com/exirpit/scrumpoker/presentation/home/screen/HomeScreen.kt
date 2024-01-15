@@ -1,7 +1,6 @@
-package com.exirpit.scrumpoker.presentation.singlePlayer.screen
+package com.exirpit.scrumpoker.presentation.home.screen
 
 import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.lazy.grid.GridCells
@@ -13,19 +12,17 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.geometry.Offset
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.exirpit.scrumpoker.presentation.common.composable.ScrumPokerExpandedCard
 import com.exirpit.scrumpoker.presentation.common.composable.ScrumPokerGridCard
 import com.exirpit.scrumpoker.presentation.common.state.CardState
-import com.exirpit.scrumpoker.presentation.singlePlayer.viewModel.SinglePlayerViewModel
+import com.exirpit.scrumpoker.presentation.home.viewModel.HomeScreenViewModel
 import com.exirpit.scrumpoker.presentation.common.theme.ScrumPokerTheme
 
 @Composable
-fun SinglePlayerScreen(
-    viewModel: SinglePlayerViewModel = viewModel()
+fun HomeScreen(
+    viewModel: HomeScreenViewModel = viewModel()
 ) {
     val itemList = mutableListOf<CardState>(
         CardState("1"),
@@ -67,8 +64,8 @@ fun SinglePlayerScreen(
 @Composable
 private fun SinglePlayerScreenPreview() {
     ScrumPokerTheme {
-        SinglePlayerScreen(
-            viewModel = SinglePlayerViewModel()
+        HomeScreen(
+            viewModel = HomeScreenViewModel()
         )
     }
 }
