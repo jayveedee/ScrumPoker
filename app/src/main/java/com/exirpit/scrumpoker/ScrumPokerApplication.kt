@@ -4,4 +4,7 @@ import android.app.Application
 
 class ScrumPokerApplication: Application() {
 
+    companion object {
+
+    }
 }
