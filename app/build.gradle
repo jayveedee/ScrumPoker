@@ -1,9 +1,8 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
-    id 'com.google.devtools.ksp'
-    id 'com.google.dagger.hilt.android'
     id 'kotlin-kapt'
+    id 'com.google.dagger.hilt.android'
 }
 
 android {
@@ -57,10 +56,6 @@ android {
     }
 }
 
-kapt {
-    correctErrorTypes true
-}
-
 dependencies {
     implementation 'androidx.activity:activity-compose:1.8.2'
     implementation 'androidx.core:core-ktx:1.12.0'
@@ -82,9 +77,15 @@ dependencies {
     debugImplementation 'androidx.compose.ui:ui-test-manifest'
     testImplementation 'junit:junit:4.13.2'
     testImplementation "org.mockito:mockito-core:3.12.4"
-    implementation "androidx.room:room-runtime:2.6.1"
-    annotationProcessor "androidx.room:room-compiler:2.6.1"
-    ksp "androidx.room:room-compiler:2.6.1"
     implementation "com.google.dagger:hilt-android:2.44"
     kapt "com.google.dagger:hilt-compiler:2.44"
+    implementation "androidx.room:room-runtime:2.6.1"
+    annotationProcessor "androidx.room:room-compiler:2.6.1"
+    kapt "androidx.room:room-compiler:2.6.1"
+
+
+}
+
+kapt {
+    correctErrorTypes true
 }
