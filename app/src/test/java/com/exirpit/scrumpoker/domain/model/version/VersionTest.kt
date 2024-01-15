@@ -1,9 +1,15 @@
 package com.exirpit.scrumpoker.domain.model.version
 
+import android.content.pm.PackageInfo
+import com.exirpit.scrumpoker.data.common.exceptions.BaseException
 import org.junit.Assert.assertEquals
 import org.junit.Test
+import org.junit.runner.RunWith
+import org.mockito.Mockito.mock
+import org.mockito.Mockito.`when` as whenever
+import org.mockito.junit.MockitoJUnitRunner
 
-
+@RunWith(MockitoJUnitRunner::class)
 class VersionTest {
 
     @Test
@@ -76,5 +82,95 @@ class VersionTest {
         assertEquals(0, v2ComparisonActual)
         assertEquals(0, v3ComparisonActual)
         assertEquals(0, v4ComparisonActual)
+    }
+
+    @Test
+    fun `should return valid version when version name follows the version standard major, minor, build, revision`() {
+        // Arrange
+        val mockPackageInfo = mock(PackageInfo::class.java)
+        whenever(mockPackageInfo.longVersionCode).thenReturn(1)
+        mockPackageInfo.versionName = "1.1.1"
+
+        val unit2 = Version(1,1,1,1)
+
+        // Act
+        val result = Version.getVersionFromPackageInformation(mockPackageInfo)
+
+        // Assert
+        assertEquals(unit2, result)
+    }
+
+    @Test
+    fun `should return valid version when version name follows the version standard major, minor, build`() {
+        // Arrange
+        val mockPackageInfo = mock(PackageInfo::class.java)
+        whenever(mockPackageInfo.longVersionCode).thenReturn(1)
+        mockPackageInfo.versionName = "1.1"
+
+        val unit2 = Version(1,1,1,0)
+
+        // Act
+        val result = Version.getVersionFromPackageInformation(mockPackageInfo)
+
+        // Assert
+        assertEquals(unit2, result)
+    }
+
+    @Test
+    fun `should return valid version when version name follows the version standard major, minor`() {
+        // Arrange
+        val mockPackageInfo = mock(PackageInfo::class.java)
+        whenever(mockPackageInfo.longVersionCode).thenReturn(1)
+        mockPackageInfo.versionName = "1"
+
+        val unit2 = Version(1,1,0,0)
+
+        // Act
+        val result = Version.getVersionFromPackageInformation(mockPackageInfo)
+
+        // Assert
+        assertEquals(unit2, result)
+    }
+
+    @Test
+    fun `should return valid version when version name follows the version standard major`() {
+        // Arrange
+        val mockPackageInfo = mock(PackageInfo::class.java)
+        whenever(mockPackageInfo.longVersionCode).thenReturn(1)
+        mockPackageInfo.versionName = ""
+
+        val unit2 = Version(1,0,0,0)
+
+        // Act
+        val result = Version.getVersionFromPackageInformation(mockPackageInfo)
+
+        // Assert
+        assertEquals(unit2, result)
+    }
+
+    @Test(expected = BaseException::class)
+    fun `should throw exception if version name has words or letters`() {
+        // Arrange
+        val mockPackageInfo = mock(PackageInfo::class.java)
+        whenever(mockPackageInfo.longVersionCode).thenReturn(1)
+        mockPackageInfo.versionName = "asd.asd.beta"
+
+        // Act
+        Version.getVersionFromPackageInformation(mockPackageInfo)
+
+        // Assert
+    }
+
+    @Test(expected = BaseException::class)
+    fun `should throw exception if version name has capitalized words or letters`() {
+        // Arrange
+        val mockPackageInfo = mock(PackageInfo::class.java)
+        whenever(mockPackageInfo.longVersionCode).thenReturn(1)
+        mockPackageInfo.versionName = "ASD.ASD.BETA"
+
+        // Act
+        Version.getVersionFromPackageInformation(mockPackageInfo)
+
+        // Assert
     }
 }
