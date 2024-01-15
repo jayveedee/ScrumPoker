@@ -41,7 +41,7 @@ fun ScrumPokerGridCard(
         modifier = modifier
             .padding(16.dp)
             .fillMaxWidth()
-            .height(120.dp),
+            .height(140.dp),
         elevation = CardDefaults.cardElevation(
             defaultElevation = 10.dp,
             pressedElevation = 5.dp
