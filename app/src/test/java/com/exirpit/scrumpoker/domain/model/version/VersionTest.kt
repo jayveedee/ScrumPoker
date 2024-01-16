@@ -1,7 +1,7 @@
 package com.exirpit.scrumpoker.domain.model.version
 
 import android.content.pm.PackageInfo
-import com.exirpit.scrumpoker.data.common.exceptions.BaseException
+import com.exirpit.scrumpoker.domain.model.exceptions.BaseException
 import org.junit.Assert.assertEquals
 import org.junit.Test
 import org.junit.runner.RunWith

@@ -4,7 +4,12 @@ import android.app.Application
 
 class ScrumPokerApplication: Application() {
 
-    companion object {
+    override fun onCreate() {
+        super.onCreate()
+        ScrumPokerApplicationModule(this)
+    }
 
+    companion object {
+        lateinit var appModule: ScrumPokerApplicationModule
     }
 }

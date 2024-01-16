@@ -1,6 +1,7 @@
 package com.exirpit.scrumpoker.presentation.common.composable
 
 import androidx.compose.foundation.Canvas
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -12,6 +13,7 @@ import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -87,7 +89,7 @@ fun ScrumPokerExpandedCard(
         if (!isFlipped) {
             CardBackSide()
         } else {
-            CardFrontSide(cardTitle = card.title, cardFontSize = 50.sp)
+            CardFrontSide(cardTitle = card.title, cardFontSize = 150.sp)
         }
     }
 }
@@ -99,7 +101,9 @@ private fun CardFrontSide(
     cardFontWeight: FontWeight = FontWeight.Bold,
 ) {
     Box(
-        modifier = Modifier.fillMaxSize(),
+        modifier = Modifier
+            .fillMaxSize()
+            .background(MaterialTheme.colorScheme.primary),
         contentAlignment = Alignment.Center
     ) {
         Column(
@@ -113,7 +117,8 @@ private fun CardFrontSide(
                 text = cardTitle,
                 textAlign = TextAlign.Center,
                 fontSize = cardFontSize,
-                fontWeight = cardFontWeight
+                fontWeight = cardFontWeight,
+                color = MaterialTheme.colorScheme.onPrimary
             )
         }
     }
@@ -122,25 +127,11 @@ private fun CardFrontSide(
 @Composable
 private fun CardBackSide() {
     Box(
-        modifier = Modifier.fillMaxSize(),
-        contentAlignment = Alignment.Center
+        modifier = Modifier
+            .fillMaxSize()
+            .background(MaterialTheme.colorScheme.tertiary),
+        contentAlignment = Alignment.Center,
     ) {
-        Canvas(
-            modifier = Modifier.fillMaxSize()
-        ) {
-            val canvasWidth = size.width
-            val canvasHeight = size.height
-            val lineSpacing = 5f
-            val lineColor = Color.Black
 
-            for (x in 0 until canvasWidth.toInt() step lineSpacing.toInt()) {
-                drawLine(
-                    color = lineColor,
-                    start = Offset(x.toFloat(), 0f),
-                    end = Offset(x.toFloat(), canvasHeight),
-                    strokeWidth = 2f
-                )
-            }
-        }
     }
 }

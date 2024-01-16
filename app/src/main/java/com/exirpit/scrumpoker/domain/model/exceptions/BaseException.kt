@@ -1,4 +1,4 @@
-package com.exirpit.scrumpoker.data.common.exceptions
+package com.exirpit.scrumpoker.domain.model.exceptions
 
 open class BaseException : Exception {
     constructor(message: String): super(message)

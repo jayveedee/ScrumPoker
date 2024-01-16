@@ -4,4 +4,5 @@ import com.exirpit.scrumpoker.domain.model.card.Card
 
 interface ICardRepository {
     fun getFibonacciCards(): List<Card>
+    fun getPrimeCards(): List<Card>
 }

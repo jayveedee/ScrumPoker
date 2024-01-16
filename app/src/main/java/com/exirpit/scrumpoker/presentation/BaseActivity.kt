@@ -9,6 +9,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.compose.composable
+import com.exirpit.scrumpoker.ScrumPokerApplication
 import com.exirpit.scrumpoker.presentation.home.screen.HomeScreen
 import com.exirpit.scrumpoker.presentation.home.viewModel.HomeScreenViewModel
 import com.exirpit.scrumpoker.presentation.common.theme.ScrumPokerTheme
@@ -36,7 +37,7 @@ private fun Navigation(
     ) {
         composable(HomeScreenRoute) {
             HomeScreen(
-                viewModel = HomeScreenViewModel()
+                viewModel = HomeScreenViewModel(ScrumPokerApplication.appModule.cacheRepository)
             )
         }
     }
