@@ -1,4 +1,4 @@
-package com.exirpit.scrumpoker.presentation.home.screen
+package com.exirpit.scrumpoker.presentation.scrum.home.screen
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.layout.Arrangement
@@ -16,9 +16,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.exirpit.scrumpoker.ScrumPokerApplication
+import com.exirpit.scrumpoker.data.repository.CardRepository
 import com.exirpit.scrumpoker.presentation.common.composable.ScrumPokerExpandedCard
 import com.exirpit.scrumpoker.presentation.common.composable.ScrumPokerGridCard
-import com.exirpit.scrumpoker.presentation.home.viewModel.HomeScreenViewModel
+import com.exirpit.scrumpoker.presentation.scrum.home.viewModel.HomeScreenViewModel
 import com.exirpit.scrumpoker.presentation.common.theme.ScrumPokerTheme
 
 @Composable
@@ -55,10 +56,15 @@ fun HomeScreen(
 
 @Preview(showBackground = true)
 @Composable
-private fun SinglePlayerScreenPreview() {
+private fun HomeScreenPreview() {
     ScrumPokerTheme {
         HomeScreen(
-            HomeScreenViewModel(ScrumPokerApplication.appModule.cardRepository)
+            HomeScreenViewModel(
+                CardRepository(
+                    ScrumPokerApplication.db.cardDAO,
+                    ScrumPokerApplication.db.preferencesDAO
+                )
+            )
         )
     }
 }

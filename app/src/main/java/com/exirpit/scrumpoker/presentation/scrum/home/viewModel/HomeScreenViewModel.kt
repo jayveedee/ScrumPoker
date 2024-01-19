@@ -1,4 +1,4 @@
-package com.exirpit.scrumpoker.presentation.home.viewModel
+package com.exirpit.scrumpoker.presentation.scrum.home.viewModel
 
 import com.exirpit.scrumpoker.domain.repository.ICardRepository
 import com.exirpit.scrumpoker.presentation.BaseViewModel

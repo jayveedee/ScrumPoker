@@ -1,13 +1,10 @@
 package com.exirpit.scrumpoker.data.repository
 
-import androidx.compose.runtime.collectAsState
-import com.exirpit.scrumpoker.data.dao.card.CardDAO
-import com.exirpit.scrumpoker.data.dao.settings.launch.LaunchInfoDAO
-import com.exirpit.scrumpoker.data.dao.settings.user.PreferencesDAO
+import com.exirpit.scrumpoker.data.dao.CardDAO
+import com.exirpit.scrumpoker.data.dao.PreferencesDAO
 import com.exirpit.scrumpoker.domain.model.card.Card
 import com.exirpit.scrumpoker.domain.model.card.CardType
 import com.exirpit.scrumpoker.domain.repository.ICardRepository
-import kotlinx.coroutines.flow.collect
 
 class CardRepository(
     private val cardDAO: CardDAO,

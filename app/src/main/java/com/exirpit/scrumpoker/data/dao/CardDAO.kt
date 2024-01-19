@@ -1,4 +1,4 @@
-package com.exirpit.scrumpoker.data.dao.card
+package com.exirpit.scrumpoker.data.dao
 
 import androidx.room.Dao
 import androidx.room.Delete
