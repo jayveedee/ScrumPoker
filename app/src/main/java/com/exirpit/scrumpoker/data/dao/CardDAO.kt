@@ -9,11 +9,12 @@ import androidx.room.Upsert
 import com.exirpit.scrumpoker.domain.model.card.Card
 import com.exirpit.scrumpoker.domain.model.card.CardType
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.StateFlow
 
 @Dao
 interface CardDAO {
     @Query("SELECT * FROM card")
-    fun getAllCards(): Flow<List<Card>>
+    fun getAllCards(): List<Card>?
     @Query("SELECT * FROM card WHERE type = :type")
     fun getSpecificCards(type: CardType): List<Card>?
     @Upsert

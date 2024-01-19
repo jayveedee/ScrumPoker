@@ -1,9 +1,10 @@
 package com.exirpit.scrumpoker.domain.repository
 
 import com.exirpit.scrumpoker.domain.model.card.Card
+import kotlinx.coroutines.flow.StateFlow
 
 interface ICardRepository {
-    fun getMainScreenCards(): List<Card>
-    fun getFibonacciCards(): List<Card>
-    fun getPrimeCards(): List<Card>
+    suspend fun getMainScreenCards(): List<Card>
+    suspend fun getFibonacciCards(): List<Card>
+    suspend fun getPrimeCards(): List<Card>
 }

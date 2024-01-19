@@ -8,6 +8,7 @@ import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -15,8 +16,9 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.exirpit.scrumpoker.ScrumPokerApplication
 import com.exirpit.scrumpoker.data.repository.CardRepository
+import com.exirpit.scrumpoker.domain.model.card.Card
+import com.exirpit.scrumpoker.presentation.BaseViewModel
 import com.exirpit.scrumpoker.presentation.common.composable.ScrumPokerExpandedCard
 import com.exirpit.scrumpoker.presentation.common.composable.ScrumPokerGridCard
 import com.exirpit.scrumpoker.presentation.scrum.home.viewModel.HomeScreenViewModel
@@ -26,9 +28,10 @@ import com.exirpit.scrumpoker.presentation.common.theme.ScrumPokerTheme
 fun HomeScreen(
     viewModel: HomeScreenViewModel = viewModel()
 ) {
-    val itemList = viewModel.cards
+    val itemList by viewModel.cardsStateFlow.collectAsState()
+
     ScrumPokerTheme {
-        var expandedItem by remember { mutableStateOf(itemList[0])}
+        var expandedItem by remember { mutableStateOf(Card())}
         var isExpanded by remember { mutableStateOf(false)}
 
         Surface(modifier = Modifier.fillMaxSize()) {
@@ -61,8 +64,8 @@ private fun HomeScreenPreview() {
         HomeScreen(
             HomeScreenViewModel(
                 CardRepository(
-                    ScrumPokerApplication.db.cardDAO,
-                    ScrumPokerApplication.db.preferencesDAO
+                    BaseViewModel.db.cardDAO,
+                    BaseViewModel.db.preferencesDAO
                 )
             )
         )

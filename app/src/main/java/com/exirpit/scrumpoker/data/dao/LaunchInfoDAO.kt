@@ -9,7 +9,7 @@ import com.exirpit.scrumpoker.domain.model.settings.launch.LaunchInfo
 @Dao
 interface LaunchInfoDAO {
     @Query("SELECT * FROM LaunchInfo WHERE id = 1")
-    fun getLaunchInfo(): LaunchInfo
+    fun getLaunchInfo(): LaunchInfo?
     @Upsert
     suspend fun upsertLaunchInfo(launchInfo: LaunchInfo)
     @Delete

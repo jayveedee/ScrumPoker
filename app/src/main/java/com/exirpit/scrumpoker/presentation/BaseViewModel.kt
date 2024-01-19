@@ -6,6 +6,7 @@ import androidx.room.Room
 import com.exirpit.scrumpoker.core.ScrumPokerDatabase
 import com.exirpit.scrumpoker.domain.model.card.Card
 import com.exirpit.scrumpoker.domain.model.card.CardType
+import com.exirpit.scrumpoker.domain.model.settings.launch.LaunchInfo
 import com.exirpit.scrumpoker.domain.model.settings.user.Preferences
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -45,7 +46,7 @@ open class BaseViewModel : ViewModel() {
     private suspend fun configureDatabase(database: ScrumPokerDatabase) {
         val launchInfo = database.launchInfoDAO.getLaunchInfo()
 
-        if (!launchInfo.defaultDataInserted) {
+        if (launchInfo == null || !launchInfo.defaultDataInserted) {
             database.cardDAO.upsertCards(
                 listOf(
                     Card("1", CardType.Fibonacci),
@@ -78,8 +79,9 @@ open class BaseViewModel : ViewModel() {
             )
 
             database.launchInfoDAO.upsertLaunchInfo(
-                launchInfo.copy(
-                    defaultDataInserted = true
+                LaunchInfo(
+                    defaultDataInserted = true,
+                    onboardingCompleted = false
                 )
             )
 
