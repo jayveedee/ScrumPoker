@@ -22,21 +22,19 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.geometry.Offset
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.exirpit.scrumpoker.presentation.common.state.CardState
+import com.exirpit.scrumpoker.domain.model.card.Card
 import com.exirpit.scrumpoker.presentation.common.theme.ScrumPokerShapes
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ScrumPokerGridCard(
     modifier: Modifier = Modifier,
-    card: CardState,
+    card: Card,
     onExpandedStateChanged: () -> Unit
 ) {
     Card(
@@ -65,7 +63,7 @@ fun ScrumPokerGridCard(
 @Composable
 fun ScrumPokerExpandedCard(
     modifier: Modifier = Modifier,
-    card: CardState,
+    card: Card,
     onExpandedStateChanged: () -> Unit
 ) {
     var isFlipped by remember { mutableStateOf(false) }

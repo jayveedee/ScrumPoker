@@ -37,7 +37,7 @@ private fun Navigation(
     ) {
         composable(HomeScreenRoute) {
             HomeScreen(
-                viewModel = HomeScreenViewModel(ScrumPokerApplication.appModule.cacheRepository)
+                viewModel = HomeScreenViewModel(ScrumPokerApplication.appModule.cardRepository)
             )
         }
     }

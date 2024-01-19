@@ -58,7 +58,7 @@ fun HomeScreen(
 private fun SinglePlayerScreenPreview() {
     ScrumPokerTheme {
         HomeScreen(
-            HomeScreenViewModel(ScrumPokerApplication.appModule.cacheRepository)
+            HomeScreenViewModel(ScrumPokerApplication.appModule.cardRepository)
         )
     }
 }

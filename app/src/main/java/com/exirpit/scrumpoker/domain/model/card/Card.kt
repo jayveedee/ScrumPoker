@@ -7,5 +7,5 @@ import androidx.room.PrimaryKey
 data class Card(
     val title: String,
     val type: CardType,
-    @PrimaryKey val id: Int? = null
+    @PrimaryKey(autoGenerate = true) val id: Int? = null
 )
