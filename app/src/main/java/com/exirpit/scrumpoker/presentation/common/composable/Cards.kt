@@ -53,7 +53,7 @@ fun ScrumPokerGridCard(
     ) {
         CardFrontSide(
             cardTitle = card.title,
-            cardFontSize = 30.sp,
+            cardFontSize = 50.sp,
             cardFontWeight = FontWeight.Bold
         )
     }
