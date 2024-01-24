@@ -6,5 +6,5 @@ import kotlinx.coroutines.flow.StateFlow
 interface ICardRepository {
     suspend fun getMainScreenCards(): List<Card>
     suspend fun getFibonacciCards(): List<Card>
-    suspend fun getPrimeCards(): List<Card>
+    suspend fun getStandardCards(): List<Card>
 }

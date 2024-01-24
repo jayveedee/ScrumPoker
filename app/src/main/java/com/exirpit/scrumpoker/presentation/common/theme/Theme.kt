@@ -30,7 +30,23 @@ private val ScrumPokerDarkColorScheme = darkColorScheme(
 )
 
 private val ScrumPokerLightColorScheme = lightColorScheme(
-
+    primary = White20,
+    onPrimary = White80,
+    primaryContainer = White30,
+    onPrimaryContainer = White90,
+    inversePrimary = PhilippineBronze40,
+    secondary = MalachiteGreen80,
+    onSecondary = MalachiteGreen20,
+    tertiary = Onyx80,
+    onTertiary = Onyx20,
+    tertiaryContainer = Onyx90,
+    onTertiaryContainer = Onyx30,
+    secondaryContainer = MalachiteGreen90,
+    onSecondaryContainer = MalachiteGreen30,
+    background = EerieBlack40,
+    onBackground = EerieBlack10,
+    surface = White90,
+    onSurface = White10
 )
 
 @Composable

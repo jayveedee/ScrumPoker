@@ -5,7 +5,6 @@ import com.exirpit.scrumpoker.data.dao.PreferencesDAO
 import com.exirpit.scrumpoker.domain.model.card.Card
 import com.exirpit.scrumpoker.domain.model.card.CardType
 import com.exirpit.scrumpoker.domain.repository.ICardRepository
-import kotlinx.coroutines.flow.StateFlow
 
 class CardRepository(
     private val cardDAO: CardDAO,
@@ -15,17 +14,24 @@ class CardRepository(
     override suspend fun getMainScreenCards(): List<Card> {
         val preferences = preferencesDAO.getPreferences() ?: return getFibonacciCards()
 
-        return if (preferences.preferredCards == CardType.Fibonacci)
-            getFibonacciCards()
-        else
-            getPrimeCards()
+        return when (preferences.preferredCards) {
+            CardType.Fibonacci -> {
+                getFibonacciCards()
+            }
+            CardType.Standard -> {
+                getStandardCards()
+            }
+            CardType.Custom -> {
+                emptyList() //TODO
+            }
+        }
     }
 
     override suspend fun getFibonacciCards(): List<Card> {
         return cardDAO.getSpecificCards(CardType.Fibonacci) ?: emptyList()
     }
 
-    override suspend fun getPrimeCards(): List<Card> {
-        return cardDAO.getSpecificCards(CardType.Prime) ?: emptyList()
+    override suspend fun getStandardCards(): List<Card> {
+        return cardDAO.getSpecificCards(CardType.Standard) ?: emptyList()
     }
 }

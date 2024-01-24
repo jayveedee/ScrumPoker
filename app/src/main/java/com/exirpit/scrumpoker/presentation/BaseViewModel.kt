@@ -58,23 +58,25 @@ open class BaseViewModel : ViewModel() {
                     Card("21", CardType.Fibonacci),
                     Card("34", CardType.Fibonacci),
                     Card("55", CardType.Fibonacci),
+                    Card("89", CardType.Fibonacci),
                     Card("?", CardType.Fibonacci),
                     Card("...", CardType.Fibonacci),
                 )
             )
             database.cardDAO.upsertCards(
                 listOf(
-                    Card("2", CardType.Prime),
-                    Card("3", CardType.Prime),
-                    Card("5", CardType.Prime),
-                    Card("7", CardType.Prime),
-                    Card("11", CardType.Prime),
-                    Card("17", CardType.Prime),
-                    Card("19", CardType.Prime),
-                    Card("23", CardType.Prime),
-                    Card("29", CardType.Prime),
-                    Card("?", CardType.Prime),
-                    Card("...", CardType.Prime),
+                    Card("1/2", CardType.Standard),
+                    Card("1", CardType.Standard),
+                    Card("2", CardType.Standard),
+                    Card("3", CardType.Standard),
+                    Card("5", CardType.Standard),
+                    Card("8", CardType.Standard),
+                    Card("13", CardType.Standard),
+                    Card("20", CardType.Standard),
+                    Card("40", CardType.Standard),
+                    Card("100", CardType.Standard),
+                    Card("?", CardType.Standard),
+                    Card("...", CardType.Standard),
                 )
             )
 
@@ -87,7 +89,7 @@ open class BaseViewModel : ViewModel() {
 
             database.preferencesDAO.upsertPreferences(
                 Preferences(
-                    CardType.Fibonacci
+                    CardType.Standard
                 )
             )
         }

@@ -3,9 +3,6 @@ package com.exirpit.scrumpoker.presentation
 // Top level route
 private const val ScrumPokerRoute = "ScrumPoker/"
 
-// Splash screen
-const val SplashRoute = "${ScrumPokerRoute}Splash/"
-
 // Onboarding routes
 private const val OnboardingRoute = "${ScrumPokerRoute}Onboarding/"
 const val OnboardingWelcomeScreenRoute = "${OnboardingRoute}Welcome/"

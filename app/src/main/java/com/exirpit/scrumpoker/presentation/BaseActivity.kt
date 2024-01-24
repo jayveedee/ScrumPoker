@@ -4,8 +4,6 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
 import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
@@ -15,8 +13,6 @@ import com.exirpit.scrumpoker.data.repository.CardRepository
 import com.exirpit.scrumpoker.presentation.scrum.home.screen.HomeScreen
 import com.exirpit.scrumpoker.presentation.scrum.home.viewModel.HomeScreenViewModel
 import com.exirpit.scrumpoker.presentation.common.theme.ScrumPokerTheme
-import com.exirpit.scrumpoker.presentation.splash.presentation.SplashScreen
-import com.exirpit.scrumpoker.presentation.splash.viewmodel.SplashScreenViewModel
 
 class MainActivity : ComponentActivity() {
 
@@ -41,16 +37,11 @@ private fun Navigation(
 ) {
     val context = LocalContext.current
 
-    val appIsConfigured by viewModel.applicationLoadedStateFlow.collectAsState()
-
     NavHost(
         navController = navController,
-        startDestination = if (!appIsConfigured) SplashRoute else HomeRoute
+        startDestination = HomeRoute
     ) {
         composable(HomeRoute) {
-            SplashScreen(
-                viewModel = SplashScreenViewModel()
-            )
             HomeScreen(
                 viewModel = HomeScreenViewModel(
                     CardRepository(
