@@ -46,7 +46,7 @@ fun HomeScreen(
                     SPTopAppBarDefault(
                         title = stringResource(id = R.string.app_bar_home_screen_title),
                         onNavigationClick = {
-
+                            TODO()
                         },
                         onActionClick = {
                             TODO()
