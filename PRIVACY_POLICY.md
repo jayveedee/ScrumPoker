@@ -9,4 +9,4 @@ The application does not gather any sensitive data and there are no plans for it
 None other than the required permissions Google Play Store requires.
 
 ### Contact
-If there are any further questions, you may discuss here on GitHub or send me an email via jvd@exirpit.com
+If there are any further questions, you may discuss here on GitHub or send me an email via jayveedees@gmail.com
