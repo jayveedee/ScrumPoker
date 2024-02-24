@@ -60,15 +60,19 @@ dependencies {
     implementation 'com.google.accompanist:accompanist-navigation-animation:0.32.0'
     implementation platform('org.jetbrains.kotlin:kotlin-bom:1.9.22')
     implementation platform('androidx.compose:compose-bom:2023.10.01')
+    debugImplementation 'androidx.compose.ui:ui-tooling'
+    debugImplementation 'androidx.compose.ui:ui-test-manifest'
+    implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.9.22'
+
+    // Android tests
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
     androidTestImplementation 'androidx.compose.ui:ui-test-junit4'
     androidTestImplementation platform('androidx.compose:compose-bom:2023.10.01')
-    debugImplementation 'androidx.compose.ui:ui-tooling'
-    debugImplementation 'androidx.compose.ui:ui-test-manifest'
+
+    // Unit tests
     testImplementation 'junit:junit:4.13.2'
     testImplementation 'org.mockito:mockito-core:5.9.0'
-    implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.9.22'
 
     // Room
     implementation "androidx.room:room-runtime:2.6.1"
