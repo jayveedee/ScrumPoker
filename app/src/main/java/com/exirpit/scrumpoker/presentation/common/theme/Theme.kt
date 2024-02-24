@@ -60,17 +60,6 @@ fun ScrumPokerTheme(
     shapes: Shapes = ScrumPokerShapes,
     content: @Composable () -> Unit
 ) {
-    val dynamicColorSupport = Build.VERSION.SDK_INT >= Build.VERSION_CODES.S
-
-    val colorScheme =
-        if (dynamicColorSupport)
-            if (isSystemInDarkTheme())
-                dynamicDarkColorScheme(LocalContext.current)
-            else
-                dynamicLightColorScheme(LocalContext.current)
-        else
-            colors
-
     MaterialTheme(
         colorScheme = colors,
         typography = typography,

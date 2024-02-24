@@ -27,6 +27,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -52,153 +53,34 @@ fun HomeScreen(
 
     ScrumPokerTheme {
         Surface(modifier = Modifier.fillMaxSize()) {
+            Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+                var expandedItem by remember { mutableStateOf(Card()) }
+                var isExpanded by remember { mutableStateOf(false) }
 
-            val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
-            val drawerScope = rememberCoroutineScope()
-
-            ModalNavigationDrawer(
-                drawerState = drawerState,
-                drawerContent = {
-                    NavigationDrawerSheet()
-                }
-            ) {
-                Box(modifier = Modifier.fillMaxSize()) {
-                    var expandedItem by remember { mutableStateOf(Card()) }
-                    var isExpanded by remember { mutableStateOf(false) }
-
-                    Column {
-                        SPTopAppBarDefault(
-                            title = stringResource(id = R.string.app_bar_home_screen_title),
-                            onNavigationClick = {
-                                drawerScope.launch {
-                                    drawerState.apply {
-                                        if (isClosed) open() else close()
-                                    }
-                                }
-                            },
-                            onActionClick = {
-                                TODO()
-                            }
-                        )
-
-                        LazyVerticalGrid(
-                            columns = GridCells.Fixed(3),
-                            verticalArrangement = Arrangement.Center
-                        ) {
-                            items(itemList) {
-                                ScrumPokerGridCard(card = it, onExpandedStateChanged = { ->
-                                    expandedItem = it
-                                    isExpanded = true
-                                })
-                            }
+                Column {
+                    LazyVerticalGrid(
+                        columns = GridCells.Fixed(3),
+                        verticalArrangement = Arrangement.Center
+                    ) {
+                        items(itemList) {
+                            ScrumPokerGridCard(card = it, onExpandedStateChanged = { ->
+                                expandedItem = it
+                                isExpanded = true
+                            })
                         }
                     }
-                    AnimatedVisibility(
-                        visible = isExpanded,
-                        modifier = Modifier.fillMaxSize()
-                    ) {
-                        ScrumPokerExpandedCard(card = expandedItem, onExpandedStateChanged = {
-                            isExpanded = false
-                        })
-                    }
+                }
+                AnimatedVisibility(
+                    visible = isExpanded,
+                    modifier = Modifier.fillMaxSize()
+                ) {
+                    ScrumPokerExpandedCard(card = expandedItem, onExpandedStateChanged = {
+                        isExpanded = false
+                    })
                 }
             }
         }
     }
-}
-
-@Composable
-private fun NavigationDrawerSheet() {
-    ModalDrawerSheet {
-        Text(
-            text = "Multiplayer", //TODO localize
-            modifier = Modifier.padding(16.dp)
-        )
-        CustomNavigationDrawerItem(
-            label = "Host", //TODO localize
-            isSelected = false,
-            onClick = {
-
-            }
-        )
-        CustomNavigationDrawerItem(
-            label = "Connect", //TODO localize
-            isSelected = false,
-            onClick = {
-
-            }
-        )
-        Divider(modifier = Modifier.padding(horizontal = 12.dp))
-        Text(
-            text = "Cards", //TODO localize
-            modifier = Modifier.padding(16.dp)
-        )
-        CustomNavigationDrawerItem(
-            label = "Standard", //TODO localize
-            isSelected = true,
-            onClick = {
-
-            }
-        )
-        CustomNavigationDrawerItem(
-            label = "Custom", //TODO localize
-            isSelected = false,
-            onClick = {
-
-            }
-        )
-        Divider(modifier = Modifier.padding(horizontal = 12.dp))
-        Text(
-            text = "Advanced", //TODO localize
-            modifier = Modifier.padding(16.dp)
-        )
-        CustomNavigationDrawerItem(
-            label = "Settings", //TODO localize
-            isSelected = false,
-            onClick = {
-
-            }
-        )
-        CustomNavigationDrawerItem(
-            label = "About", //TODO localize
-            isSelected = false,
-            onClick = {
-
-            }
-        )
-        CustomNavigationDrawerItem(
-            label = "Help", //TODO localize
-            isSelected = false,
-            onClick = {
-
-            }
-        )
-    }
-}
-
-@Composable
-private fun CustomNavigationDrawerItem(
-    label: String,
-    isSelected: Boolean = false,
-    onClick: () -> Unit
-) {
-    NavigationDrawerItem(
-        modifier = Modifier.padding(horizontal = 12.dp),
-        label = { Text(text = label) },
-        selected = isSelected,
-        onClick = { onClick.invoke() },
-        icon = { CustomNavigationDrawerIcon() }
-    )
-}
-
-@Composable
-private fun CustomNavigationDrawerIcon() {
-    Icon(
-        modifier = Modifier.size(12.dp),
-        painter = painterResource(id = R.drawable.ic_circle),
-        tint = MaterialTheme.colorScheme.primary,
-        contentDescription = "Navigation item" //TODO localize
-    )
 }
 
 @Preview(showBackground = true)
