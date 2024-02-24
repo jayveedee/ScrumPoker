@@ -1,13 +1,17 @@
 package com.exirpit.scrumpoker.presentation.common.theme
 
+import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.ColorScheme
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Shapes
 import androidx.compose.material3.Typography
 import androidx.compose.material3.darkColorScheme
+import androidx.compose.material3.dynamicDarkColorScheme
+import androidx.compose.material3.dynamicLightColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.platform.LocalContext
 
 private val ScrumPokerDarkColorScheme = darkColorScheme(
     primary = LavenderGray80,
@@ -16,13 +20,13 @@ private val ScrumPokerDarkColorScheme = darkColorScheme(
     onPrimaryContainer = LavenderGray90,
     inversePrimary = LavenderGray40,
     secondary = LavenderBlue90,
-    onSecondary = LavenderBlue20,
+    onSecondary = LavenderGray10,
     tertiary = Onyx20,
     onTertiary = Onyx80,
     tertiaryContainer = Onyx30,
     onTertiaryContainer = Onyx90,
-    secondaryContainer = LavenderBlue30,
-    onSecondaryContainer = LavenderBlue80,
+    secondaryContainer = EerieBlack30,
+    onSecondaryContainer = LavenderBlue90,
     background = EerieBlack10,
     onBackground = EerieBlack40,
     surface = EerieBlack10,
@@ -41,8 +45,8 @@ private val ScrumPokerLightColorScheme = lightColorScheme(
     onTertiary = Onyx20,
     tertiaryContainer = Onyx90,
     onTertiaryContainer = Onyx30,
-    secondaryContainer = MalachiteGreen90,
-    onSecondaryContainer = MalachiteGreen30,
+    secondaryContainer = White80,
+    onSecondaryContainer = White10,
     background = EerieBlack40,
     onBackground = EerieBlack10,
     surface = White90,
@@ -56,6 +60,17 @@ fun ScrumPokerTheme(
     shapes: Shapes = ScrumPokerShapes,
     content: @Composable () -> Unit
 ) {
+    val dynamicColorSupport = Build.VERSION.SDK_INT >= Build.VERSION_CODES.S
+
+    val colorScheme =
+        if (dynamicColorSupport)
+            if (isSystemInDarkTheme())
+                dynamicDarkColorScheme(LocalContext.current)
+            else
+                dynamicLightColorScheme(LocalContext.current)
+        else
+            colors
+
     MaterialTheme(
         colorScheme = colors,
         typography = typography,
