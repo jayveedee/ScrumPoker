@@ -21,7 +21,7 @@ open class BaseViewModel : ViewModel() {
     val applicationLoadedStateFlow = _applicationLoadedStateFlow.asStateFlow()
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
-    // Public methods                                                                            //
+    // Public methods                                                                             //
     ////////////////////////////////////////////////////////////////////////////////////////////////
     fun onStartup(context: Context) {
         if (!_applicationLoadedStateFlow.value) {
