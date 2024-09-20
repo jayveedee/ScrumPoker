@@ -32,7 +32,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.exirpit.scrumpoker.domain.model.card.Card
+import com.exirpit.scrumpoker.data.db.entities.card.Card
 import com.exirpit.scrumpoker.presentation.common.theme.ScrumPokerShapes
 
 @OptIn(ExperimentalMaterial3Api::class)
