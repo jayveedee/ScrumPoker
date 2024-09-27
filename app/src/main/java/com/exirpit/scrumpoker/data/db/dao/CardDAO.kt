@@ -1,15 +1,11 @@
-package com.exirpit.scrumpoker.data.dao
+package com.exirpit.scrumpoker.data.db.dao
 
 import androidx.room.Dao
 import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Upsert
-import com.exirpit.scrumpoker.domain.model.card.Card
-import com.exirpit.scrumpoker.domain.model.card.CardType
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.StateFlow
+import com.exirpit.scrumpoker.data.db.entities.card.Card
+import com.exirpit.scrumpoker.data.db.entities.card.CardType
 
 @Dao
 interface CardDAO {

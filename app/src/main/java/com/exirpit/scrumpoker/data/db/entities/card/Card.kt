@@ -1,4 +1,4 @@
-package com.exirpit.scrumpoker.domain.model.card
+package com.exirpit.scrumpoker.data.db.entities.card
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
