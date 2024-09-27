@@ -12,6 +12,7 @@ import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.material3.Divider
 import androidx.compose.material3.DrawerValue
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ModalDrawerSheet
@@ -133,7 +134,7 @@ private fun NavigationDrawerSheet() {
 
             }
         )
-        Divider(modifier = Modifier.padding(horizontal = 12.dp))
+        HorizontalDivider(thickness = 12.dp)
         Text(
             text = "Cards", //TODO localize
             modifier = Modifier.padding(16.dp)
@@ -152,7 +153,7 @@ private fun NavigationDrawerSheet() {
 
             }
         )
-        Divider(modifier = Modifier.padding(horizontal = 12.dp))
+        HorizontalDivider(thickness = 12.dp)
         Text(
             text = "Advanced", //TODO localize
             modifier = Modifier.padding(16.dp)
