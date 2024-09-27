@@ -13,18 +13,18 @@ import com.exirpit.scrumpoker.data.repository.CardRepository
 import com.exirpit.scrumpoker.presentation.scrum.home.screen.HomeScreen
 import com.exirpit.scrumpoker.presentation.scrum.home.viewModel.HomeScreenViewModel
 import com.exirpit.scrumpoker.presentation.common.theme.ScrumPokerTheme
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
-
-    private val viewModel: BaseViewModel = BaseViewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewModel.onStartup(this)
 
         setContent {
             ScrumPokerTheme {
-                Navigation(viewModel = viewModel)
+                Navigation()
             }
         }
     }
@@ -33,7 +33,6 @@ class MainActivity : ComponentActivity() {
 @Composable
 private fun Navigation(
     navController: NavHostController = rememberNavController(),
-    viewModel: BaseViewModel
 ) {
     val context = LocalContext.current
 
@@ -42,14 +41,7 @@ private fun Navigation(
         startDestination = HomeRoute
     ) {
         composable(HomeRoute) {
-            HomeScreen(
-                viewModel = HomeScreenViewModel(
-                    CardRepository(
-                        BaseViewModel.db.cardDAO,
-                        BaseViewModel.db.preferencesDAO
-                    )
-                )
-            )
+            HomeScreen()
         }
     }
 }

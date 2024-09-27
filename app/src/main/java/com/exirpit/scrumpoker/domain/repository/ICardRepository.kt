@@ -1,6 +1,6 @@
 package com.exirpit.scrumpoker.domain.repository
 
-import com.exirpit.scrumpoker.domain.model.card.Card
+import com.exirpit.scrumpoker.data.db.entities.card.Card
 import kotlinx.coroutines.flow.StateFlow
 
 interface ICardRepository {

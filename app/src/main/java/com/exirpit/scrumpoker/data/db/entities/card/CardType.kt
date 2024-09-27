@@ -1,4 +1,4 @@
-package com.exirpit.scrumpoker.domain.model.card
+package com.exirpit.scrumpoker.data.db.entities.card
 
 enum class CardType {
     Standard,
