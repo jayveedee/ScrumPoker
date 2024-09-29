@@ -34,8 +34,6 @@ class MainActivity : ComponentActivity() {
 private fun Navigation(
     navController: NavHostController = rememberNavController(),
 ) {
-    val context = LocalContext.current
-
     NavHost(
         navController = navController,
         startDestination = HomeRoute
