@@ -2,9 +2,9 @@ package com.exirpit.scrumpoker.presentation
 
 // Top level route
 private const val ScrumPokerRoute = "ScrumPoker/"
+private const val OnboardingRoute = "${ScrumPokerRoute}Onboarding/"
 
 // Onboarding routes
-private const val OnboardingRoute = "${ScrumPokerRoute}Onboarding/"
 const val OnboardingWelcomeScreenRoute = "${OnboardingRoute}Welcome/"
 const val OnboardingIntroductionScreenRoute = "${OnboardingRoute}Introduction/"
 const val OnboardingAvatarScreenRoute = "${OnboardingRoute}Avatar/"

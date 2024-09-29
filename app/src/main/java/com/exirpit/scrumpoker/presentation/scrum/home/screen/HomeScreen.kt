@@ -10,10 +10,13 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
-import androidx.compose.material3.Divider
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.AccountCircle
+import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material3.DrawerValue
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ModalDrawerSheet
 import androidx.compose.material3.ModalNavigationDrawer
@@ -70,15 +73,13 @@ fun HomeScreen(
                             Column {
                                 SPTopAppBarDefault(
                                     title = stringResource(id = R.string.app_bar_home_screen_title),
+                                    navigationIcon = Icons.Default.Menu,
                                     onNavigationClick = {
                                         drawerScope.launch {
                                             drawerState.apply {
                                                 if (isClosed) open() else close()
                                             }
                                         }
-                                    },
-                                    onActionClick = {
-                                        TODO()
                                     }
                                 )
 
@@ -102,7 +103,8 @@ fun HomeScreen(
                                     card = expandedItem,
                                     onExpandedStateChanged = {
                                         isExpanded = false
-                                    })
+                                    }
+                                )
                             }
                         }
                     }
@@ -116,44 +118,76 @@ fun HomeScreen(
 @Composable
 private fun NavigationDrawerSheet() {
     ModalDrawerSheet {
+        IconButton(
+            modifier = Modifier
+                .padding(top = 10.dp)
+                .align(Alignment.CenterHorizontally),
+            onClick = {
+                TODO()
+            }
+        ) {
+            Icon(
+                imageVector = Icons.Default.AccountCircle,
+                tint = MaterialTheme.colorScheme.primary,
+                contentDescription = "User image", //TODO localize
+                modifier = Modifier.size(100.dp)
+            )
+        }
         Text(
-            text = "Multiplayer", //TODO localize
+            text = "Jákup Viljam Dam", //TODO fetch from viewmodel
+            fontSize = MaterialTheme.typography.bodyMedium.fontSize,
+            color = MaterialTheme.colorScheme.secondary,
+            modifier = Modifier
+                .padding(top = 5.dp)
+                .align(Alignment.CenterHorizontally)
+        )
+        Text(
+            text = "Engineer", //TODO fetch from viewmodel
+            fontSize = MaterialTheme.typography.labelSmall.fontSize,
+            color = MaterialTheme.colorScheme.primary,
+            modifier = Modifier
+                .padding(top = 5.dp, bottom = 16.dp)
+                .align(Alignment.CenterHorizontally)
+        )
+        HorizontalDivider()
+        Text(
+            text = "Estimation Session", //TODO localize
             modifier = Modifier.padding(16.dp)
         )
         CustomNavigationDrawerItem(
-            label = "Host", //TODO localize
-            isSelected = false,
-            onClick = {
-
-            }
-        )
-        CustomNavigationDrawerItem(
-            label = "Connect", //TODO localize
-            isSelected = false,
-            onClick = {
-
-            }
-        )
-        HorizontalDivider(thickness = 12.dp)
-        Text(
-            text = "Cards", //TODO localize
-            modifier = Modifier.padding(16.dp)
-        )
-        CustomNavigationDrawerItem(
-            label = "Standard", //TODO localize
+            label = "Traditional", //TODO localize
             isSelected = true,
             onClick = {
-
+                TODO()
             }
         )
         CustomNavigationDrawerItem(
-            label = "Custom", //TODO localize
+            label = "Modern", //TODO localize
             isSelected = false,
             onClick = {
-
+                TODO()
             }
         )
-        HorizontalDivider(thickness = 12.dp)
+        HorizontalDivider(modifier = Modifier.padding(horizontal = 12.dp))
+        Text(
+            text = "Profile", //TODO localize
+            modifier = Modifier.padding(16.dp)
+        )
+        CustomNavigationDrawerItem(
+            label = "User", //TODO localize
+            isSelected = false,
+            onClick = {
+                TODO()
+            }
+        )
+        CustomNavigationDrawerItem(
+            label = "Cards", //TODO localize
+            isSelected = false,
+            onClick = {
+                TODO()
+            }
+        )
+        HorizontalDivider(modifier = Modifier.padding(horizontal = 12.dp))
         Text(
             text = "Advanced", //TODO localize
             modifier = Modifier.padding(16.dp)
@@ -162,21 +196,22 @@ private fun NavigationDrawerSheet() {
             label = "Settings", //TODO localize
             isSelected = false,
             onClick = {
-
+                TODO()
             }
         )
         CustomNavigationDrawerItem(
             label = "About", //TODO localize
             isSelected = false,
             onClick = {
-
+                TODO()
             }
         )
+        HorizontalDivider(modifier = Modifier.padding(horizontal = 12.dp))
         CustomNavigationDrawerItem(
             label = "Help", //TODO localize
             isSelected = false,
             onClick = {
-
+                TODO()
             }
         )
     }
@@ -185,7 +220,7 @@ private fun NavigationDrawerSheet() {
 @Composable
 private fun CustomNavigationDrawerItem(
     label: String,
-    isSelected: Boolean = false,
+    isSelected: Boolean,
     onClick: () -> Unit
 ) {
     NavigationDrawerItem(

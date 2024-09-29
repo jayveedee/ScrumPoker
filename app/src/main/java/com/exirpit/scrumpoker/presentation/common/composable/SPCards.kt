@@ -35,7 +35,6 @@ import androidx.compose.ui.unit.sp
 import com.exirpit.scrumpoker.data.db.entities.card.Card
 import com.exirpit.scrumpoker.presentation.common.theme.ScrumPokerShapes
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ScrumPokerGridCard(
     modifier: Modifier = Modifier,
@@ -64,7 +63,6 @@ fun ScrumPokerGridCard(
     }
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ScrumPokerExpandedCard(
     modifier: Modifier = Modifier,

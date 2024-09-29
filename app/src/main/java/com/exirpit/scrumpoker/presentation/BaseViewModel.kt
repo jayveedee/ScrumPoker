@@ -7,6 +7,4 @@ import kotlinx.coroutines.flow.asStateFlow
 import javax.inject.Inject
 
 @HiltViewModel
-open class BaseViewModel @Inject constructor() : ViewModel() {
-
-}
+open class BaseViewModel @Inject constructor() : ViewModel()
