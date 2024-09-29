@@ -22,7 +22,7 @@ val ScrumPokerTypography = Typography(
     bodyLarge = TextStyle(
         fontWeight = FontWeight.Normal,
         fontFamily = FontFamily.Default,
-        fontSize = 18.sp
+        fontSize = 16.sp
     ),
     bodyMedium = TextStyle(
         fontWeight = FontWeight.Normal,

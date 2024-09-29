@@ -1,4 +1,4 @@
-package com.exirpit.scrumpoker.presentation.scrum.home.screen
+package com.exirpit.scrumpoker.presentation.screens.home
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.layout.Arrangement
@@ -36,7 +36,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.exirpit.scrumpoker.R
 import com.exirpit.scrumpoker.presentation.common.composable.SPTopAppBarDefault
@@ -45,11 +44,11 @@ import com.exirpit.scrumpoker.presentation.common.composable.ScrumPokerExpandedC
 import com.exirpit.scrumpoker.presentation.common.composable.ScrumPokerGridCard
 import com.exirpit.scrumpoker.presentation.common.theme.ScrumPokerTheme
 import kotlinx.coroutines.launch
-import com.exirpit.scrumpoker.presentation.scrum.home.viewModel.HomeScreenViewModel
 
 @Composable
 fun HomeScreen(
-    viewModel: HomeScreenViewModel = hiltViewModel()
+    viewModel: HomeScreenViewModel = hiltViewModel(),
+    onNavigationItemClicked: (String) -> Unit
 ) {
     val itemList by viewModel.cardsStateFlow.collectAsState()
 
@@ -66,7 +65,15 @@ fun HomeScreen(
                     ModalNavigationDrawer(
                         drawerState = drawerState,
                         drawerContent = {
-                            NavigationDrawerSheet()
+                            NavigationDrawerSheet(
+                                onNavigationItemClicked = { it ->
+                                    if (it == "Modern" || it == "Traditional") { // TODO use localized strings
+                                        //TODO blah blah skifta kort ella prompt online lobby/connect/create stuff
+                                    } else {
+                                        onNavigationItemClicked.invoke(it)
+                                    }
+                                }
+                            )
                         }
                     ) {
                         Box(modifier = Modifier.fillMaxSize()) {
@@ -116,14 +123,16 @@ fun HomeScreen(
 }
 
 @Composable
-private fun NavigationDrawerSheet() {
+private fun NavigationDrawerSheet(
+    onNavigationItemClicked: (String) -> Unit
+) {
     ModalDrawerSheet {
         IconButton(
             modifier = Modifier
                 .padding(top = 10.dp)
                 .align(Alignment.CenterHorizontally),
             onClick = {
-                TODO()
+                // Do nothing
             }
         ) {
             Icon(
@@ -158,14 +167,14 @@ private fun NavigationDrawerSheet() {
             label = "Traditional", //TODO localize
             isSelected = true,
             onClick = {
-                TODO()
+                onNavigationItemClicked.invoke("Traditional") //TODO use localized string
             }
         )
         CustomNavigationDrawerItem(
             label = "Modern", //TODO localize
             isSelected = false,
             onClick = {
-                TODO()
+                onNavigationItemClicked.invoke("Modern") //TODO use localized string
             }
         )
         HorizontalDivider(modifier = Modifier.padding(horizontal = 12.dp))
@@ -177,14 +186,14 @@ private fun NavigationDrawerSheet() {
             label = "User", //TODO localize
             isSelected = false,
             onClick = {
-                TODO()
+                onNavigationItemClicked.invoke("User") //TODO use localized string
             }
         )
         CustomNavigationDrawerItem(
             label = "Cards", //TODO localize
             isSelected = false,
             onClick = {
-                TODO()
+                onNavigationItemClicked.invoke("Cards") //TODO use localized string
             }
         )
         HorizontalDivider(modifier = Modifier.padding(horizontal = 12.dp))
@@ -196,22 +205,14 @@ private fun NavigationDrawerSheet() {
             label = "Settings", //TODO localize
             isSelected = false,
             onClick = {
-                TODO()
+                onNavigationItemClicked.invoke("Settings") //TODO use localized string
             }
         )
         CustomNavigationDrawerItem(
             label = "About", //TODO localize
             isSelected = false,
             onClick = {
-                TODO()
-            }
-        )
-        HorizontalDivider(modifier = Modifier.padding(horizontal = 12.dp))
-        CustomNavigationDrawerItem(
-            label = "Help", //TODO localize
-            isSelected = false,
-            onClick = {
-                TODO()
+                onNavigationItemClicked.invoke("About") //TODO use localized string
             }
         )
     }
@@ -240,12 +241,4 @@ private fun CustomNavigationDrawerIcon() {
         tint = MaterialTheme.colorScheme.primary,
         contentDescription = "Navigation item" //TODO localize
     )
-}
-
-@Preview(showBackground = true)
-@Composable
-private fun HomeScreenPreview() {
-    ScrumPokerTheme {
-        HomeScreen()
-    }
 }
