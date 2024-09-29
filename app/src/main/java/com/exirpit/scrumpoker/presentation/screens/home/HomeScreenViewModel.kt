@@ -1,8 +1,10 @@
 package com.exirpit.scrumpoker.presentation.screens.home
 
 import androidx.lifecycle.viewModelScope
-import com.exirpit.scrumpoker.data.db.entities.card.Card
-import com.exirpit.scrumpoker.domain.repository.ICardRepository
+import com.exirpit.scrumpoker.data.db.entities.card.CardDeckEntity
+import com.exirpit.scrumpoker.data.db.relations.CardDeckWithCards
+import com.exirpit.scrumpoker.data.preferences.SPPreferences
+import com.exirpit.scrumpoker.domain.repository.ICardDeckRepository
 import com.exirpit.scrumpoker.presentation.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -14,13 +16,14 @@ import javax.inject.Inject
 
 @HiltViewModel
 class HomeScreenViewModel @Inject constructor (
-    private val cardRepository: ICardRepository
-) : BaseViewModel() {
+    preferences: SPPreferences,
+    private val cardDeckRepository: ICardDeckRepository
+) : BaseViewModel(preferences) {
 
     //--------------------------------------------------------------------------------------------//
     // Flows
     //--------------------------------------------------------------------------------------------//
-    private val _cardsStateFlow = MutableStateFlow<List<Card>>(emptyList())
+    private val _cardsStateFlow = MutableStateFlow<CardDeckWithCards?>(null)
     val cardsStateFlow = _cardsStateFlow.asStateFlow()
 
     //--------------------------------------------------------------------------------------------//
@@ -28,8 +31,11 @@ class HomeScreenViewModel @Inject constructor (
     //--------------------------------------------------------------------------------------------//
     init {
         viewModelScope.launch {
-            _cardsStateFlow.update {
-                cardRepository.getStandardCards()
+            //TODO add some loading state for UI
+            cardDeckRepository.getMainCardDeck().collect { cardDeck ->
+                _cardsStateFlow.update {
+                    cardDeck
+                }
             }
         }
     }

@@ -1,8 +1,8 @@
 package com.exirpit.scrumpoker.presentation
 
-// Top level route
+// Top level routes
 private const val ScrumPokerRoute = "ScrumPoker/"
-private const val OnboardingRoute = "${ScrumPokerRoute}Onboarding/"
+private const val OnboardingRoute = "Onboarding/"
 
 // Onboarding routes
 const val OnboardingWelcomeScreenRoute = "${OnboardingRoute}Welcome/"
@@ -18,3 +18,7 @@ const val SettingsScreenRoute = "${HomeRoute}Settings/"
 
 // About routes
 const val AboutScreenRoute = "${HomeRoute}About/"
+
+// Cards routes
+const val CardsScreenRoute = "${HomeRoute}Cards/"
+const val CardsEditScreenRoute = "${CardsScreenRoute}Edit/"

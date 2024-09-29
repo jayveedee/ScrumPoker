@@ -2,7 +2,7 @@ package com.exirpit.scrumpoker.di
 
 import android.app.Application
 import androidx.room.Room
-import com.exirpit.scrumpoker.data.db.ScrumPokerDatabase
+import com.exirpit.scrumpoker.data.db.SPDatabase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -14,11 +14,11 @@ import javax.inject.Singleton
 object DatabaseModule {
     @Provides
     @Singleton
-    fun provideDatabase(app: Application): ScrumPokerDatabase {
+    fun provideDatabase(app: Application): SPDatabase {
         return Room.databaseBuilder(
             app,
-            ScrumPokerDatabase::class.java,
-            ScrumPokerDatabase.DATABASE_NAME
+            SPDatabase::class.java,
+            SPDatabase.DATABASE_NAME
         ).build()
     }
 }

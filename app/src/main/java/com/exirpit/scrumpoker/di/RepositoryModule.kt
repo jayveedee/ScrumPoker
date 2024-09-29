@@ -1,8 +1,8 @@
 package com.exirpit.scrumpoker.di
 
-import com.exirpit.scrumpoker.data.db.dao.CardDAO
-import com.exirpit.scrumpoker.data.repository.CardRepository
-import com.exirpit.scrumpoker.domain.repository.ICardRepository
+import com.exirpit.scrumpoker.data.db.dao.ICardDeckDAO
+import com.exirpit.scrumpoker.data.repository.CardDeckRepository
+import com.exirpit.scrumpoker.domain.repository.ICardDeckRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -12,7 +12,7 @@ import dagger.hilt.components.SingletonComponent
 @InstallIn(SingletonComponent::class)
 object RepositoryModule {
     @Provides
-    fun provideCardRepository(cardDAO: CardDAO) : ICardRepository {
-        return CardRepository(cardDAO)
+    fun provideCardDeckRepository(cardDeckDAO: ICardDeckDAO) : ICardDeckRepository {
+        return CardDeckRepository(cardDeckDAO)
     }
 }

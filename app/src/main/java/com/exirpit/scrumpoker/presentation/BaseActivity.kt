@@ -10,7 +10,7 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.compose.composable
 import com.exirpit.scrumpoker.presentation.screens.home.HomeScreen
 import com.exirpit.scrumpoker.presentation.common.theme.ScrumPokerTheme
-import com.exirpit.scrumpoker.presentation.screens.about.AboutScreen
+import com.exirpit.scrumpoker.presentation.screens.home.drawer.about.AboutScreen
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

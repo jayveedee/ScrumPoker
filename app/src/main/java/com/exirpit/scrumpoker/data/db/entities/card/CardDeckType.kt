@@ -1,7 +1,6 @@
 package com.exirpit.scrumpoker.data.db.entities.card
 
-enum class CardType {
-    Standard,
-    Fibonacci,
+enum class CardDeckType {
+    Default,
     Custom
 }

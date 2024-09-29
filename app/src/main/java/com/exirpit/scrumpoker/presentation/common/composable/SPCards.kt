@@ -13,7 +13,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -32,13 +31,13 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.exirpit.scrumpoker.data.db.entities.card.Card
+import com.exirpit.scrumpoker.data.db.entities.card.CardEntity
 import com.exirpit.scrumpoker.presentation.common.theme.ScrumPokerShapes
 
 @Composable
 fun ScrumPokerGridCard(
     modifier: Modifier = Modifier,
-    card: Card,
+    card: CardEntity,
     onExpandedStateChanged: () -> Unit
 ) {
     Card(
@@ -66,7 +65,7 @@ fun ScrumPokerGridCard(
 @Composable
 fun ScrumPokerExpandedCard(
     modifier: Modifier = Modifier,
-    card: Card,
+    card: CardEntity,
     usesGyroScope: Boolean = true,
     onExpandedStateChanged: () -> Unit
 ) {

@@ -39,7 +39,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.compose.ui.unit.dp
 import com.exirpit.scrumpoker.R
 import com.exirpit.scrumpoker.presentation.common.composable.SPTopAppBarDefault
-import com.exirpit.scrumpoker.data.db.entities.card.Card
+import com.exirpit.scrumpoker.data.db.entities.card.CardEntity
 import com.exirpit.scrumpoker.presentation.common.composable.ScrumPokerExpandedCard
 import com.exirpit.scrumpoker.presentation.common.composable.ScrumPokerGridCard
 import com.exirpit.scrumpoker.presentation.common.theme.ScrumPokerTheme
@@ -50,12 +50,10 @@ fun HomeScreen(
     viewModel: HomeScreenViewModel = hiltViewModel(),
     onNavigationItemClicked: (String) -> Unit
 ) {
-    val itemList by viewModel.cardsStateFlow.collectAsState()
-
     ScrumPokerTheme {
         Surface(modifier = Modifier.fillMaxSize()) {
             Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-                var expandedItem by remember { mutableStateOf(Card()) }
+                var expandedItem by remember { mutableStateOf(CardEntity()) }
                 var isExpanded by remember { mutableStateOf(false) }
 
                 Surface(modifier = Modifier.fillMaxSize()) {
@@ -68,6 +66,7 @@ fun HomeScreen(
                             NavigationDrawerSheet(
                                 onNavigationItemClicked = { it ->
                                     if (it == "Modern" || it == "Traditional") { // TODO use localized strings
+                                        TODO()
                                         //TODO blah blah skifta kort ella prompt online lobby/connect/create stuff
                                     } else {
                                         onNavigationItemClicked.invoke(it)
@@ -90,15 +89,21 @@ fun HomeScreen(
                                     }
                                 )
 
+                                val itemList by viewModel.cardsStateFlow.collectAsState()
                                 LazyVerticalGrid(
                                     columns = GridCells.Fixed(3),
                                     verticalArrangement = Arrangement.Center
                                 ) {
-                                    items(itemList) {
-                                        ScrumPokerGridCard(card = it, onExpandedStateChanged = { ->
-                                            expandedItem = it
-                                            isExpanded = true
-                                        })
+                                    if (itemList != null) {
+                                        items(itemList!!.cards) {
+                                            ScrumPokerGridCard(
+                                                card = it,
+                                                onExpandedStateChanged = { ->
+                                                    expandedItem = it
+                                                    isExpanded = true
+                                                }
+                                            )
+                                        }
                                     }
                                 }
                             }

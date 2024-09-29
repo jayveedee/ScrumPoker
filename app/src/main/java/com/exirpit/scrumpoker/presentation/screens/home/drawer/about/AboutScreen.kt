@@ -1,4 +1,4 @@
-package com.exirpit.scrumpoker.presentation.screens.about
+package com.exirpit.scrumpoker.presentation.screens.home.drawer.about
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
