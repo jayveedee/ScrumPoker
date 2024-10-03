@@ -6,7 +6,6 @@ import android.content.Intent
 import android.net.Uri
 import androidx.lifecycle.viewModelScope
 import com.exirpit.scrumpoker.R
-import com.exirpit.scrumpoker.data.preferences.SPPreferences
 import com.exirpit.scrumpoker.domain.model.version.Version
 import com.exirpit.scrumpoker.presentation.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -21,9 +20,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class AboutScreenViewModel @Inject constructor(
-    preferences: SPPreferences,
     private val app: Application
-) : BaseViewModel(preferences) {
+) : BaseViewModel() {
 
     //--------------------------------------------------------------------------------------------//
     // Flows
