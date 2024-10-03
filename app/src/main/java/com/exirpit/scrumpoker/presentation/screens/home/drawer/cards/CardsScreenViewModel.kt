@@ -6,10 +6,12 @@ import com.exirpit.scrumpoker.data.db.relations.CardDeckWithCards
 import com.exirpit.scrumpoker.domain.repository.ICardDeckRepository
 import com.exirpit.scrumpoker.presentation.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 @HiltViewModel
@@ -35,11 +37,14 @@ class CardsScreenViewModel @Inject constructor(
     //--------------------------------------------------------------------------------------------//
     init {
         viewModelScope.launch {
-            _defaultCardsStateFlow.update {
-                cardDeckRepository.getDefaultCardDecks()
-            }
-            _customCardsStateFlow.update {
-                cardDeckRepository.getCustomCardDecks()
+            //TODO add some loading state
+            withContext(Dispatchers.IO) {
+                _defaultCardsStateFlow.update {
+                    cardDeckRepository.getDefaultCardDecks()
+                }
+                _customCardsStateFlow.update {
+                    cardDeckRepository.getCustomCardDecks()
+                }
             }
         }
     }

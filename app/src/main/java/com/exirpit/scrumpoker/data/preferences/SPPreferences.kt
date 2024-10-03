@@ -28,6 +28,13 @@ class SPPreferences @Inject constructor(
     // Initializer
     //--------------------------------------------------------------------------------------------//
     init {
+
+    }
+
+    //--------------------------------------------------------------------------------------------//
+    // Public methods
+    //--------------------------------------------------------------------------------------------//
+    fun initializePreferences() {
         if (isFirstRun()) {
             CoroutineScope(Dispatchers.IO).launch {
                 val cardDecks = createDefaultCardDecks()

@@ -37,7 +37,7 @@ private fun Navigation(
         startDestination = HomeRoute
     ) {
         composable(HomeRoute) {
-            HomeScreen(onNavigationItemClicked = { it ->
+            HomeScreen(onNavigationItemClicked = {
                 when (it) { //TODO use localized strings
                     "User" -> {
                         TODO()
