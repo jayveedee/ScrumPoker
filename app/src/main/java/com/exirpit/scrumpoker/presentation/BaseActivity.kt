@@ -11,6 +11,7 @@ import androidx.navigation.compose.composable
 import com.exirpit.scrumpoker.presentation.screens.home.HomeScreen
 import com.exirpit.scrumpoker.presentation.common.theme.ScrumPokerTheme
 import com.exirpit.scrumpoker.presentation.screens.home.drawer.about.AboutScreen
+import com.exirpit.scrumpoker.presentation.screens.home.drawer.cards.CardsScreen
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -37,27 +38,40 @@ private fun Navigation(
     ) {
         composable(HomeRoute) {
             HomeScreen(onNavigationItemClicked = { it ->
-                    when (it) { //TODO use localized strings
-                        "User" -> {
-                            TODO()
-                        }
-                        "Cards" -> {
-                            TODO()
-                        }
-                        "Settings" -> {
-                            TODO()
-                        }
-                        "About" -> {
-                            navController.navigate(AboutScreenRoute)
-                        }
+                when (it) { //TODO use localized strings
+                    "User" -> {
+                        TODO()
+                    }
+
+                    "Cards" -> {
+                        navController.navigate(CardsScreenRoute)
+                    }
+
+                    "Settings" -> {
+                        TODO()
+                    }
+
+                    "About" -> {
+                        navController.navigate(AboutScreenRoute)
                     }
                 }
+            }
             )
         }
         composable(AboutScreenRoute) {
             AboutScreen {
                 navController.popBackStack()
             }
+        }
+        composable(CardsScreenRoute) {
+            CardsScreen(onNavigateBackClicked = {
+                navController.popBackStack() }
+            ) {
+                navController.navigate(CardsEditScreenRoute)
+            }
+        }
+        composable(CardsEditScreenRoute) {
+            TODO()
         }
     }
 }
