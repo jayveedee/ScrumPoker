@@ -1,9 +1,7 @@
 package com.exirpit.scrumpoker.presentation.screens.home
 
 import androidx.lifecycle.viewModelScope
-import com.exirpit.scrumpoker.data.db.entities.card.CardDeckEntity
 import com.exirpit.scrumpoker.data.db.relations.CardDeckWithCards
-import com.exirpit.scrumpoker.data.preferences.SPPreferences
 import com.exirpit.scrumpoker.domain.repository.ICardDeckRepository
 import com.exirpit.scrumpoker.presentation.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -16,9 +14,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class HomeScreenViewModel @Inject constructor (
-    preferences: SPPreferences,
     private val cardDeckRepository: ICardDeckRepository
-) : BaseViewModel(preferences) {
+) : BaseViewModel() {
 
     //--------------------------------------------------------------------------------------------//
     // Flows
